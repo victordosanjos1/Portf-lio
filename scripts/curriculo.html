@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Currículo · Victor dos Anjos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #111114;
+    --muted: #4b4b55;
+    --line: #e4e2ec;
+    --accent: #5b3fd6;
+    --accent-soft: #f2efff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body {
+    width: 210mm; height: 297mm; overflow: hidden;
+    font-family: "Geist", "Segoe UI", Arial, sans-serif;
+    color: var(--ink); font-size: 9.6pt; line-height: 1.45;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .mono { font-family: "Geist Mono", Consolas, monospace; }
+
+  header {
+    padding: 13mm 14mm 8mm;
+    background: #0a0a0a;
+    background-image:
+      radial-gradient(ellipse 70% 120% at 0% 0%, rgba(139,108,255,.35), transparent 70%),
+      radial-gradient(ellipse 50% 120% at 100% 100%, rgba(139,108,255,.18), transparent 70%);
+    color: #ededed;
+    display: grid; grid-template-columns: 1fr auto; gap: 8mm; align-items: end;
+  }
+  .label { font-size: 7.6pt; letter-spacing: .08em; text-transform: uppercase; color: #a993ff; }
+  h1 { font-size: 27pt; font-weight: 800; letter-spacing: -.02em; line-height: 1.05; margin-top: 2mm; }
+  .cargo { font-size: 11.5pt; font-weight: 500; color: #d4d4d8; margin-top: 1.5mm; }
+  .cargo b { color: #a993ff; font-weight: 600; }
+  .contatos { list-style: none; font-size: 8.8pt; color: #d4d4d8; display: grid; gap: 1.2mm; text-align: right; }
+  .contatos a { color: #ededed; text-decoration: none; }
+  .contatos span { color: #8b8b95; margin-right: 1.5mm; }
+
+  main { display: grid; grid-template-columns: 1fr 58mm; gap: 8mm; padding: 7mm 14mm 0; }
+  section + section { margin-top: 4.5mm; }
+  h2 {
+    font-size: 8pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--accent); padding-bottom: 1.3mm; border-bottom: 1px solid var(--line); margin-bottom: 2.6mm;
+  }
+  h2 .num { color: #9a9aa5; margin-right: 1.5mm; }
+  p { color: #26262c; }
+
+  .proj + .proj { margin-top: 3.4mm; }
+  .proj-top { display: flex; justify-content: space-between; gap: 3mm; align-items: baseline; }
+  .proj h3 { font-size: 10.2pt; font-weight: 700; }
+  .proj .quando { font-size: 7.8pt; color: var(--muted); white-space: nowrap; }
+  .proj .tipo { font-size: 8.4pt; color: var(--accent); font-weight: 600; margin: .3mm 0 .8mm; }
+  .proj ul { padding-left: 3.6mm; color: #26262c; }
+  .proj li { margin: .4mm 0; }
+  .proj li::marker { color: var(--accent); }
+  .stack { margin-top: 1mm; font-size: 7.6pt; color: var(--muted); }
+  .menores { display: grid; gap: 1.8mm; }
+  .menores div b { font-weight: 650; }
+  .menores div span { color: var(--muted); font-size: 7.8pt; }
+
+  aside .bloco + .bloco { margin-top: 2.6mm; }
+  aside h4 { font-size: 8pt; font-weight: 600; color: var(--muted); margin-bottom: 1.2mm; }
+  .tags { display: flex; flex-wrap: wrap; gap: 1.2mm; }
+  .tags span {
+    font-size: 7.8pt; padding: .5mm 1.8mm; border-radius: 99px;
+    background: var(--accent-soft); color: #3b2a99; border: 1px solid #e2dcff;
+  }
+  .item + .item { margin-top: 2.4mm; }
+  .item b { display: block; font-weight: 650; line-height: 1.3; }
+  .item span { display: block; color: var(--muted); font-size: 8.2pt; }
+
+  footer {
+    position: absolute; left: 14mm; right: 14mm; bottom: 8mm;
+    display: flex; justify-content: space-between; font-size: 7.6pt; color: #8b8b95;
+    border-top: 1px solid var(--line); padding-top: 2mm;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="label mono">Currículo</div>
+    <h1>Victor dos Anjos</h1>
+    <div class="cargo">Desenvolvedor Full Stack · <b>Estágio / Jovem Aprendiz em TI</b></div>
+  </div>
+  <ul class="contatos">
+    <li><span>Tel./WhatsApp</span>(47) 99963-5023</li>
+    <li><span>E-mail</span><a href="mailto:dosanjosvictor23@gmail.com">dosanjosvictor23@gmail.com</a></li>
+    <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/i-victordosanjos/">linkedin.com/in/i-victordosanjos</a></li>
+    <li><span>GitHub</span><a href="https://github.com/victordosanjos1">github.com/victordosanjos1</a></li>
+    <li><span>Local</span>Joinville, SC</li>
+  </ul>
+</header>
+
+<main>
+  <div>
+    <section>
+      <h2><span class="num mono">01</span>Sobre mim</h2>
+      <p>Estudante do 3º ano do ensino médio integrado ao técnico em Desenvolvimento de Sistemas (SESI SENAI Joinville). Desenvolvi dois sistemas web para negócios reais, do levantamento de requisitos ao deploy, usando Next.js, React, TypeScript e Supabase. Gosto de transformar processos feitos em caderno e planilha em sistemas simples de usar e com regras que evitam erro. Busco minha primeira oportunidade de estágio ou jovem aprendiz em tecnologia.</p>
+    </section>
+
+    <section>
+      <h2><span class="num mono">02</span>Projetos</h2>
+
+      <div class="proj">
+        <div class="proj-top"><h3>Sistema de clientes e orçamentos · TOP Usinagem</h3><span class="quando mono">2026</span></div>
+        <div class="tipo">Sistema web interno para empresa de eletroerosão a fio · projeto real</div>
+        <ul>
+          <li>Cadastro de clientes com validação de CNPJ, orçamentos com várias peças, PDF oficial e envio por e-mail.</li>
+          <li>Numeração automática por cliente e ano, sem duplicação, garantida por função SQL com trava no banco.</li>
+          <li>Mesmo cálculo na tela, no servidor e no PDF; documento congelado após finalizar, com revisões e auditoria.</li>
+          <li>Acesso só por convite e Row Level Security em todas as tabelas.</li>
+        </ul>
+        <div class="stack mono">Next.js 16 · React 19 · TypeScript · Supabase (PostgreSQL, Auth, Storage) · jsPDF · Nodemailer · Vercel</div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top"><h3>Agenda de quadras e eventos · Amaba</h3><span class="quando mono">2026</span></div>
+        <div class="tipo">Sistema de agendamento para espaço esportivo · em produção</div>
+        <ul>
+          <li>Substituiu o caderno do dono: agenda de 2 quadras e do espaço de eventos, com bloqueio de choque de horário no banco.</li>
+          <li>46 times fixos importados, controle de mensalidades (pago, parcial, devendo) e cobrança pronta no WhatsApp.</li>
+          <li>Testes automatizados (Vitest, Playwright e testes de SQL) e deploy contínuo com GitHub Actions.</li>
+        </ul>
+        <div class="stack mono">React 19 · TypeScript · Vite · Supabase · Cloudflare Pages · GitHub Actions</div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top"><h3>Outros projetos</h3></div>
+        <div class="menores" style="margin-top:1.2mm">
+          <div><b>Site institucional · Top Usinagem (2026).</b> Site responsivo em HTML, CSS e JavaScript para empresa de usinagem de Joinville.</div>
+          <div><b>RailGuard / Ferrorama · SENAI (2026).</b> Requisitos funcionais, não funcionais e regras de negócio de um sistema de gestão ferroviária; protótipos mobile e desktop no Figma.</div>
+          <div><b>Consultoria de segurança e qualidade · SENAI (2026).</b> Análise de vulnerabilidades (SQL Injection, XSS, senhas fracas), matriz de riscos e adequação à LGPD.</div>
+          <div><b>Jogos no Roblox Studio (2025 – atual).</b> Programação em Lua, interfaces no Figma e modelos 3D no Blender.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <aside>
+    <section>
+      <h2>Habilidades</h2>
+      <div class="bloco">
+        <h4>Front-end</h4>
+        <div class="tags"><span>TypeScript</span><span>JavaScript</span><span>React</span><span>Next.js</span><span>Vite</span><span>HTML</span><span>CSS</span><span>Tailwind CSS</span></div>
+      </div>
+      <div class="bloco">
+        <h4>Back-end e dados</h4>
+        <div class="tags"><span>Supabase</span><span>PostgreSQL</span><span>Node.js</span><span>PHP</span><span>MySQL</span><span>Python</span><span>Lua</span></div>
+      </div>
+      <div class="bloco">
+        <h4>Ferramentas</h4>
+        <div class="tags"><span>Git</span><span>GitHub</span><span>GitHub Actions</span><span>Vitest</span><span>Playwright</span><span>Vercel</span><span>Cloudflare Pages</span><span>Figma</span><span>Blender</span><span>VS Code</span><span>Pacote Office</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Formação</h2>
+      <div class="item"><b>Técnico em Desenvolvimento de Sistemas</b><span>SESI SENAI Joinville · 2024 – 2026 (cursando)</span></div>
+      <div class="item"><b>Ensino Médio</b><span>SESI SENAI Joinville · 2024 – 2026 (cursando)</span></div>
+    </section>
+
+    <section>
+      <h2>Cursos</h2>
+      <div class="item"><b>Python</b><span>Santander Open Academy · 2026</span></div>
+      <div class="item"><b>Domine IA com Gemini</b><span>Santander Open Academy · 2026</span></div>
+      <div class="item"><b>Criação de jogos UGC</b><span>Arcord · 2025</span></div>
+    </section>
+
+    <section>
+      <h2>Idiomas</h2>
+      <div class="item"><b>Português</b><span>Nativo</span></div>
+      <div class="item"><b>Inglês</b><span>Intermediário</span></div>
+    </section>
+  </aside>
+</main>
+
+<footer>
+  <span>Victor dos Anjos · Desenvolvedor Full Stack</span>
+  <span>Código dos projetos: <a href="https://github.com/victordosanjos1">github.com/victordosanjos1</a></span>
+</footer>
+</body>
+</html>

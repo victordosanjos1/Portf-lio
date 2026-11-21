@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens (docs/03-design.md, seção 5).
+ * Para trocar a cor de destaque, altere só --color-accent.
+ * Ao trocar, confira: texto on-accent sobre o acento >= 4,5:1 e acento sobre surface >= 4,5:1.
+ */
+@theme {
+  /* Cores */
+  --color-bg: #0a0a0a;
+  --color-surface: #141414;
+  --color-border: #262626;
+  --color-border-strong: #3a3a3a;
+  --color-fg: #ededed;
+  --color-muted: #a1a1a1;
+  --color-accent: #8b6cff;
+  --color-on-accent: #0a0a0a;
+  --color-accent-hover: color-mix(in oklab, var(--color-accent) 80%, white);
+  /* Linhas da grade decorativa do Hero (branco a 4%) */
+  --color-grid-line: rgb(255 255 255 / 0.04);
+
+  /* Layout */
+  --container-site: 72rem;
+
+  /* Raios */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Tipografia (tamanho, altura de linha, tracking, peso) */
+  --text-display: clamp(2.5rem, 7vw, 4.5rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 800;
+
+  --text-h1-pagina: 2.125rem;
+  --text-h1-pagina--line-height: 1.1;
+  --text-h1-pagina--letter-spacing: -0.025em;
+  --text-h1-pagina--font-weight: 800;
+  --text-h1-pagina-lg: 3.25rem;
+  --text-h1-pagina-lg--line-height: 1.1;
+  --text-h1-pagina-lg--letter-spacing: -0.025em;
+  --text-h1-pagina-lg--font-weight: 800;
+
+  --text-h2: 1.875rem;
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h2--font-weight: 800;
+  --text-h2-md: 2.5rem;
+  --text-h2-md--line-height: 1.15;
+  --text-h2-md--letter-spacing: -0.02em;
+  --text-h2-md--font-weight: 800;
+  --text-h2-lg: 2.75rem;
+  --text-h2-lg--line-height: 1.15;
+  --text-h2-lg--letter-spacing: -0.02em;
+  --text-h2-lg--font-weight: 800;
+
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h3--font-weight: 650;
+  --text-h3-lg: 1.375rem;
+  --text-h3-lg--line-height: 1.3;
+  --text-h3-lg--letter-spacing: -0.01em;
+  --text-h3-lg--font-weight: 650;
+
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.6;
+  --text-lead-lg: 1.25rem;
+  --text-lead-lg--line-height: 1.6;
+
+  --text-corpo: 1rem;
+  --text-corpo--line-height: 1.7;
+  --text-corpo-lg: 1.0625rem;
+  --text-corpo-lg--line-height: 1.7;
+
+  --text-nav: 0.9375rem;
+  --text-nav--line-height: 1.5;
+
+  --text-pequeno: 0.875rem;
+  --text-pequeno--line-height: 1.5;
+
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.08em;
+  --text-label--font-weight: 500;
+
+  /* Movimento */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur-base: 250ms;
+  --dur-enter: 360ms;
+}
+
+/*
+ * Brilho violeta de fundo, derivado do acento: muda junto se --color-accent
+ * mudar. Ajuste a intensidade só aqui.
+ * --color-glow: brilho forte do topo do Hero. --color-glow-soft: camada global
+ * fixa do site inteiro (body::before, abaixo).
+ * "static": o Tailwind sempre emite estas variáveis, pois só são usadas
+ * dentro de valores arbitrários e em CSS próprio.
+ * Pior caso (Hero 22% somado ao global 18%) ~ 36% de acento sobre #0a0a0a:
+ * fg ~ 10:1 e muted ~ 4,7:1 (AA). Não aumente sem medir o contraste do muted.
+ */
+@theme static {
+  --color-glow: color-mix(in oklab, var(--color-accent) 22%, transparent);
+  --color-glow-soft: color-mix(in oklab, var(--color-accent) 18%, transparent);
+}
+
+/* Fontes ligadas às variáveis do next/font (definidas no <html> pelo layout) */
+@theme inline {
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color-scheme: dark;
+  }
+
+  body {
+    /* isolate: o brilho global (z-index -1) fica sobre o fundo do body e sob o conteúdo. */
+    isolation: isolate;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: var(--text-corpo);
+    line-height: var(--text-corpo--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /*
+   * Brilho violeta global (todas as páginas): camada fixa na viewport, estática,
+   * só gradientes (sem filter: blur). Três luzes difusas alternando os lados,
+   * então o brilho acompanha a rolagem em qualquer seção. Pseudo-elemento:
+   * invisível para leitores de tela e sem eventos de ponteiro.
+   */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 55% at 10% 5%, var(--color-glow-soft), transparent 75%),
+      radial-gradient(ellipse 60% 60% at 100% 50%, var(--color-glow-soft), transparent 75%),
+      radial-gradient(ellipse 75% 55% at 25% 100%, var(--color-glow-soft), transparent 75%);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: inherit;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+/* Rolagem suave só para quem não pediu movimento reduzido */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/*
+ * Reveal (src/components/ui/Reveal.tsx): entrada ao rolar.
+ * O estado escondido só existe com JS ativo (html.js, posto por script inline
+ * no layout) e sem pedido de movimento reduzido. Sem JS ou com
+ * prefers-reduced-motion: reduce, o conteúdo fica sempre visível.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal]:not([data-revelado]) {
+    transform: translateY(var(--reveal-y, 12px));
+  }
+
+  html.js [data-reveal="fade"]:not([data-revelado]) {
+    opacity: 0;
+  }
+
+  html.js [data-reveal][data-revelado] {
+    transition:
+      opacity var(--reveal-dur, var(--dur-enter)) var(--ease-out) var(--reveal-delay, 0s),
+      transform var(--reveal-dur, var(--dur-enter)) var(--ease-out) var(--reveal-delay, 0s);
+  }
+}
